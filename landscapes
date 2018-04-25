@@ -1,0 +1,84 @@
+float a = 0;
+float b = 150;
+
+float c = 110;
+float d = 135;
+
+float e = 170;
+float f = 175;
+
+float g = 300;
+float h = 50;
+
+float i = 360;
+
+float j  = 390;
+float k = 20;
+
+float l = 500;
+float m = 280;
+
+PVector[] clouds;
+
+
+
+void setup () {
+  size(500,500);
+  
+  clouds = new PVector[10];
+  for(int i = 0; i < clouds.length;i++){
+    float x = random(0,width);
+    float y = random(0,200);
+    clouds[i] = new PVector(x,y);
+  }
+}
+
+void draw() {
+ background(0,100,200);
+ 
+
+ 
+  noStroke();
+  fill(0,100,300);
+ rect(0,400,width,height);  // water
+
+  
+   fill(0,255,50);
+ rect(0,300, width, 100); //grass
+ 
+  // loop through clouds
+  for (int i = 0; i < clouds.length; i++) {
+    // move each cloud
+    clouds[i].add(1, 0);
+    
+    // reset if they go too far
+    if (clouds[i].x - 75 > width) {
+      clouds[i].x = -75;
+      clouds[i].y = (int) random(0, 0);
+    }
+    
+    // draw each cloud
+    noStroke();
+    fill(255);
+    ellipse(clouds[i].x, clouds[i].y, 70, 50);
+    ellipse(clouds[i].x+20, clouds[i].y+15, 70, 50);
+    ellipse(clouds[i].x-20, clouds[i].y+15, 70, 50);
+  }
+ 
+ 
+  stroke(0);
+ line(a,b,c,d);
+ line(c,d, e, f);
+ line(e,f,g,h);
+ line(g,h,i,h);
+ line(i,h, j,k);
+ line (j,k,l,m);
+ 
+ noStroke();
+ rect(0,280, 500, 20);// mountain
+
+ 
+ 
+ 
+ 
+}
